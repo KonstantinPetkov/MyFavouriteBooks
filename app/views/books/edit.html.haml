@@ -1,0 +1,20 @@
+%h2 Edit Book
+ 
+= form_tag book_path(@book), :method => :put do
+
+  = label :book, :title, 'Title'
+  = text_field :book, 'title'
+  
+  = label :book, :isbn_number, 'ISBN'
+  = text_field :book, :isbn_number
+ 
+  = label :book, :genre, 'Genre'
+  = select :book, :genre, ['Science fiction','Drama','Action and Adventure','Romance','Mystery','Horror']
+ 
+  = label :book, :publish_date, 'Published On'
+  = date_select :book, :publish_date
+  
+  = label :book, :description, 'Description'
+  = text_field :book, 'description'
+  
+  = submit_tag 'Update Book Info'
