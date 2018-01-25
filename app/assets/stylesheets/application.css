@@ -81,3 +81,6 @@ form label {
   font-weight: bold;
   color: maroon;
 }
+table#books th.hilite {
+ background-color: yellow;
+}
