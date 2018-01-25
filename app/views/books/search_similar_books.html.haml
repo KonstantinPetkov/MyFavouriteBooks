@@ -1,0 +1,21 @@
+%h1 Books by "#{@book.author}"
+
+%table#books
+  %thead
+    %tr
+      %th Movie Title
+      %th Genre
+      %th ISBN Number
+      %th Publish Date
+      %th More Info
+  %tbody
+    - @books.each do |book|
+      %tr
+        %td= book.title
+        %td= book.genre
+        %td= book.isbn_number
+        %td= book.publish_date
+        %td= link_to "More info", book_path(book)
+        
+= link_to 'Back To Info', book_path(@book)
+= link_to 'Back to all books list', books_path

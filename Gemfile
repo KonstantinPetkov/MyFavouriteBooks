@@ -63,3 +63,14 @@ group :production do
   
   gem 'rails_12factor'  # Heroku-specific production settings
 end
+
+group :test do
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  gem 'database_cleaner' # to clear Cucumber's test database between runs
+  gem 'rspec-rails'
+  gem 'capybara'         # lets Cucumber pretend to be a web browser
+  gem 'launchy'          # a useful debugging aid for user stories
+end

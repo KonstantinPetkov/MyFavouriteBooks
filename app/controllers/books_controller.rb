@@ -7,8 +7,16 @@ class MoviesController < ApplicationController
     when 'publish_date'      
       ordering,@date_header = {:publish_date => :asc}, 'hilite'
     end
+    
     @all_genre = Book.all_genre
-    @selected_genres = params[:genres] || session[:genres] || {}
+    
+    if params[:genres]
+      @selected_genres = params[:genres].permit!
+    elsif session[:genres]
+      @selected_genres = session[:genres]
+    else
+      @selected_genres = {}  
+    end
     
     if @selected_genres == {}
       @selected_genres = Hash[@all_genre.map {|genre| [genre, genre]}]
@@ -23,6 +31,16 @@ class MoviesController < ApplicationController
     @books = Book.where(genre: @selected_genres.keys).order(ordering)
     
   end
+  
+  def search_similar_books
+    @book = Book.find(params[:id])
+    if @book.author.to_s.empty?
+      flash[:warning] = "'#{@book.title}' has no author info"
+      redirect_to books_path
+    else
+      @books = Book.similar_books(@book)
+    end
+  end
 
   def show
     id = params[:id]
@@ -36,10 +54,14 @@ class MoviesController < ApplicationController
   
   def create
     params.require(:book)
-    permitted = params[:book].permit(:title,:genre,:description, :isbn_number, :publish_date)
+    permitted = params[:book].permit(:title,:genre,:description,:isbn_number,:author,:publish_date)
     @book = Book.create!(permitted)
-    flash[:notice] = "#{@book.title} was successfully created."
-    redirect_to book_path
+    if @book.save
+      flash[:success] = "#{@book.title} was successfully created."
+      redirect_to book_path
+    else
+      render 'new'
+    end
   end
   
   def edit
@@ -49,10 +71,14 @@ class MoviesController < ApplicationController
   def update
     @book = Book.find params[:id]
     params.require(:book)
-    permitted = params[:book].permit(:title,:genre,:description, :isbn_number, :publish_date)
+    permitted = params[:book].permit(:title,:genre,:description, :isbn_number,:author,:publish_date)
     @book.update_attributes!(permitted)
-    flash[:notice] = "#{@book.title} was successfully updated."
-    redirect_to book_path(@book)
+    if @book.update_attributes(permitted)
+      flash[:success] = "#{@book.title} was successfully updated."
+      redirect_to book_path(@book)
+    else
+      render 'edit'
+    end
   end
   
   def destroy

@@ -2,6 +2,9 @@
  
 %ul#details
   %li
+    Author:
+    = @book.author
+  %li
     Genre:
     = @book.genre
   %li
@@ -18,3 +21,4 @@
 = link_to 'Back to books list', books_path
 = link_to 'Edit info', edit_book_path(@book)
 = link_to 'Delete', book_path(@book), :method => :delete
+= link_to 'Find Books With Same Author', search_similar_books_path(@book)
