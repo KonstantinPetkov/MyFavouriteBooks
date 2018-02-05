@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20180125125408) do
     t.datetime "publish_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "author"
   end
 
 end

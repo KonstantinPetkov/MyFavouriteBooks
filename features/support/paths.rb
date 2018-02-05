@@ -15,17 +15,17 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/books'
-    when /^the edit page for "To Kill a Mockingbird"/
-      book = Book.where(title: "To Kill a Mockingbird")[0]
+    when /^the edit page for "Nineteen Eighty-Four"/
+      book = Book.where(title: "Nineteen Eighty-Four")[0]
       edit_book_path(book)
-    when /^the details page for "To Kill a Mockingbird"/
-      book = Book.where(title: "To Kill a Mockingbird")[0]
+    when /^the details page for "Nineteen Eighty-Four"/
+      book = Book.where(title: "Nineteen Eighty-Four")[0]
       book_path(book)
-    when /^the Similar Books page for "It"/
-      book = Book.where(title: "It")[0]
+    when /^the Similar Books page for "Dracula"/
+      book = Book.where(title: "Dracula")[0]
       search_similar_books_path(book)
-    when /^the details page for "It"/
-      book = Book.where(title: "It")[0]
+    when /^the details page for "Dracula"/
+      book = Book.where(title: "Dracula")[0]
       book_path(book)
 
     # Add more mappings here.

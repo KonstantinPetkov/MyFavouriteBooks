@@ -58,7 +58,7 @@ class BooksController < ApplicationController
     @book = Book.create!(permitted)
     if @book.save
       flash[:success] = "#{@book.title} was successfully created."
-      redirect_to book_path
+      redirect_to books_path
     else
       render 'new'
     end
@@ -75,7 +75,7 @@ class BooksController < ApplicationController
     @book.update_attributes!(permitted)
     if @book.update_attributes(permitted)
       flash[:success] = "#{@book.title} was successfully updated."
-      redirect_to book_path(@book)
+      redirect_to books_path(@book)
     else
       render 'edit'
     end
