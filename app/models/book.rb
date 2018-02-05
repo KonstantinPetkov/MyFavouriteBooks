@@ -1,7 +1,7 @@
 class Book < ActiveRecord::Base
     def self.all_genre ; ['Science fiction','Drama','Action and Adventure','Romance','Mystery','Horror'] ; end #  shortcut: array of strings
     validates :title, :presence => true
-    validates :publish_date, :presence => true
+    #validates :publish_date, :presence => true
     validates :genre, :inclusion => {:in => Book.all_genre}
     #validate :all_number_isbn
     

@@ -8,17 +8,19 @@
 
 more_books = [
     {:title => 'Nineteen Eighty-Four', :genre => 'Science fiction', :description => 'Nineteen Eighty-Four is a classic novel',
-        :isbn_number => '000001', :author => 'Stephen King', :publish_date => '8-Jun-1949'},
+        :isbn_number => '000001', :publish_date => '8-Jun-1949'},
     {:title => 'Much Ado About Nothing', :genre => 'Drama', :description => 'It is a comedy thought to have been written in 1598 and 1599',
-        :isbn_number => '000002',:author => 'Harper Lee', :publish_date => '20-Jun-1598'},
+        :isbn_number => '000002', :publish_date => '20-Jun-1598'},
     {:title => 'Dracula', :genre => 'Horror', :description => 'Dracula is an 1897 Gothic horror novel', 
-        :isbn_number => '000003', :author => 'Stephen King', :publish_date => '2-Jun-1897'},
+        :isbn_number => '000003', :publish_date => '2-Jun-1897'},
     {:title => 'Murder on the Orient Express', :genre => 'Mystery', :description => 'It is a detective novel by Agatha Christie',
-        :isbn_number => '000004', :author => 'Andy Weir', :publish_date => '1-Jan-1934'},
+        :isbn_number => '000004', :publish_date => '1-Jan-1934'},
     {:title => 'Pride and Prejudice', :genre => 'Romance', :description => 'It is a romance novel by Jane Austen, first published in 1813',
-        :isbn_number => '000005', :author => 'Harper Seng', :publish_date => '1-Fev-1813'},
+        :isbn_number => '000005', :publish_date => '1-Fev-1813'},
 ]
  
 more_books.each do |book|
   Book.create!(book)
 end
+
+#:author => 'Stephen King',:author => 'Harper Lee', :author => 'Stephen King',:author => 'Andy Weir',:author => 'Harper Seng',
