@@ -1,4 +1,4 @@
-class MoviesController < ApplicationController
+class BooksController < ApplicationController
   def index
     sort = params[:sort] || session[:sort]
     case sort
